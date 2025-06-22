@@ -21,32 +21,10 @@
 
     <div class="input-area">
       <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" />
-      <button onclick="sendMessage()">Send</button>
+      <button id="send-button">Send</button>
     </div>
   </div>
+
   <script src="/static/script.js"></script>
 </body>
 </html>
-<script>
-  // Simple client-side script to handle sending messages
-  function sendMessage() {
-    const input = document.getElementById('user-input');
-    const message = input.value.trim();
-    if (!message) return;
-
-    // Add user message to chat log
-    const chatLog = document.getElementById('chat-log');
-    chatLog.innerHTML += `<div class="user"><strong>You:</strong> ${message}</div>`;
-    input.value = '';
-
-    // Show typing indicator
-    const typingIndicator = document.getElementById('typing');
-    typingIndicator.classList.remove('hidden');
-
-    // Simulate bot response after a short delay
-    setTimeout(() => {
-      typingIndicator.classList.add('hidden');
-      chatLog.innerHTML += `<div class="bot"><strong>Sky-Sage:</strong> I’m here to help! What’s your question?</div>`;
-      chatLog.scrollTop = chatLog.scrollHeight; // Scroll to bottom
-    }, 1000);
-  }
